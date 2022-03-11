@@ -98,7 +98,7 @@ namespace NeuralNetworkLearning
             string path;
             do
             {
-                Console.Write("Whats the path of your previous network (drag and drop file onto console): ");
+                Console.Write("Whats the path of your previous network drag file into program directory and use filename: ");
                 path = Console.ReadLine();
                 try
                 {
@@ -226,6 +226,7 @@ namespace NeuralNetworkLearning
                 {
                 }
                 System.Threading.Thread.Sleep(50);
+                File.Delete("number.bmp");
             }
 
 
@@ -338,7 +339,7 @@ namespace NeuralNetworkLearning
         static public Neural_Network deserialiselaod(string path)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read); //use path and deserialise neural network
+            Stream stream = new FileStream(Directory.GetCurrentDirectory() + "\\" + path, FileMode.Open, FileAccess.Read, FileShare.Read); //use path and deserialise neural network
             Neural_Network obj = (Neural_Network)formatter.Deserialize(stream);
             stream.Close();
             return obj; //returns deserialised neural network
