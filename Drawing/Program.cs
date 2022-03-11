@@ -11,10 +11,6 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Input;
 
-/* TO DO:
- *  COMMENT YOUR DAMN CODE
- */
-
 namespace NeuralNetworkLearning
 {
     class Program
