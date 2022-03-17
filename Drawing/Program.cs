@@ -102,7 +102,7 @@ namespace NeuralNetworkLearning
                 path = Console.ReadLine();
                 try
                 {
-                    AI = Neural_Network.deserialiselaod(path);
+                    AI = Neural_Network.deserialiseLoad(path);
                 }
                 catch
                 {
@@ -230,7 +230,7 @@ namespace NeuralNetworkLearning
             }
 
 
-            Neural_Network.serialisesave(AI);
+            Neural_Network.serialiseSave(AI);
         }
         /// <summary>
         /// saves image as a bmp number.bmp and opens defualt image
@@ -311,7 +311,7 @@ namespace NeuralNetworkLearning
             activation_layers.RemoveAt(0); //removes extra ReLu
         }
 
-        static public void serialisesave(Neural_Network AI)
+        static public void serialiseSave(Neural_Network AI)
         {
             Stream stream = null;
             bool success = false;
@@ -336,7 +336,7 @@ namespace NeuralNetworkLearning
             stream.Close();
         }
 
-        static public Neural_Network deserialiselaod(string path)
+        static public Neural_Network deserialiseLoad(string path)
         {
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream(Directory.GetCurrentDirectory() + "\\" + path, FileMode.Open, FileAccess.Read, FileShare.Read); //use path and deserialise neural network
