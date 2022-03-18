@@ -28,9 +28,9 @@ namespace NeuralNetworkLearning
             int numLabels = brLabels.ReadInt32();
 
             //creates 2D pixel array
-            byte[][] pixels = new byte[28][];
+            double[][] pixels = new double[28][];
             for (int i = 0; i < pixels.Length; ++i)
-                pixels[i] = new byte[28];
+                pixels[i] = new double[28];
 
             //reads each image as greyscale image
             for (int di = 0; di < iterations; ++di)
@@ -40,7 +40,10 @@ namespace NeuralNetworkLearning
                     for (int j = 0; j < 28; ++j)
                     {
                         byte b = brImages.ReadByte();
-                        pixels[i][j] = b;
+                        double x = b / 255;
+
+
+                        pixels[i][j] = x;
                     }
                 }
                 //reads label
@@ -65,16 +68,16 @@ namespace NeuralNetworkLearning
 
     public class DigitImage
     {
-        public byte[][] pixels;
+        public double[][] pixels;
         public byte label;
 
-        public DigitImage(byte[][] pixels,
+        public DigitImage(double[][] pixels,
           byte label)
         {
             //initialises pixels and sets pixel data
-            this.pixels = new byte[28][];
+            this.pixels = new double[28][];
             for (int i = 0; i < this.pixels.Length; ++i)
-                this.pixels[i] = new byte[28];
+                this.pixels[i] = new double[28];
 
             for (int i = 0; i < 28; ++i)
                 for (int j = 0; j < 28; ++j)

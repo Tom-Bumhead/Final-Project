@@ -15,7 +15,7 @@ namespace NeuralNetworkLearning
 {
     class Program
     {
-
+        static Vector<double> temp = CreateVector.Dense<double>(784);
         static (Matrix<double>, Matrix<double>, Vector<double>) DigitImageToInput(List<DigitImage> input)
         {
             shuffle(input); //shuffles inputs to make sure no patterns arise
@@ -24,7 +24,7 @@ namespace NeuralNetworkLearning
             int counter = 0;
             foreach (var picture in input)
             {
-                Vector<double> temp = CreateVector.Dense<double>(784);
+                
                 for (int i = 0; i < 28; i++)
                 {
                     for (int j = 0; j < 28; j++)
@@ -44,6 +44,7 @@ namespace NeuralNetworkLearning
                 trueOH[i, (int)true_s[i]] = 1;  //set One Hot label for correct output
             }
             Matrix<double> true_oh = CreateMatrix.DenseOfArray(trueOH);
+            //Matrix<double> true_oh = CreateMatrix.DenseOfArray(trueOH);
             return (x, true_oh, true_s); //returns inputs and true values
         }
 
@@ -255,7 +256,7 @@ namespace NeuralNetworkLearning
             {
                 for (int y = 0; y < 28; y++)
                 {
-                    byte greyscaleColour = number.pixels[y][x];
+                    byte greyscaleColour = (byte)number.pixels[y][x];
                     bmp.SetPixel(x, y, Color.FromArgb(greyscaleColour, greyscaleColour, greyscaleColour));
                 }
             }
