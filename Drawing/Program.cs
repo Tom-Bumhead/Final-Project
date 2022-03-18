@@ -97,7 +97,7 @@ namespace NeuralNetworkLearning
                 }
                 if (choice > max || choice < min)
                 {
-                    Console.WriteLine("Invalid Choice Try Again: ");
+                    Console.Write("Invalid Choice Try Again: ");
                 }
             } while (choice > max || choice < min); //while the input isnt within the set max and min or a valid double get a new into
             return choice;
