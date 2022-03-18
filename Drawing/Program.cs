@@ -57,7 +57,7 @@ namespace NeuralNetworkLearning
             return GetInt(1, 2);
         }
 
-        public static int GetInt(int min = int.MinValue, int max = int.MaxValue)
+        public static int GetInt(int min = -1000000000, int max = 1000000000)
         {
             int choice;
             do
@@ -70,12 +70,17 @@ namespace NeuralNetworkLearning
                 {
                     choice = min - 1;
                     Console.Write("Invalid Choice Try Again: ");
+                    continue;
+                }
+                if (choice > max || choice < min)
+                {
+                    Console.Write("Invalid Choice Try Again: ");
                 }
             } while (choice > max || choice < min); //while the input isnt within the set max and min or a valid int get a new into
             return choice;
         }
 
-        public static double GetDouble(double min = double.MinValue, double max = double.MaxValue)
+        public static double GetDouble(double min = -1000000000000, double max = 1000000000000)
         {
             double choice;
             do
@@ -86,7 +91,13 @@ namespace NeuralNetworkLearning
                 }
                 catch
                 {
-                    choice = min - 1;
+                    choice = min - 3;
+                    Console.Write("Invalid Choice Try Again: ");
+                    continue;
+                }
+                if (choice > max || choice < min)
+                {
+                    Console.WriteLine("Invalid Choice Try Again: ");
                 }
             } while (choice > max || choice < min); //while the input isnt within the set max and min or a valid double get a new into
             return choice;
